@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bootcamp Course</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left: Video + Notes -->
+      <div class="left">
+        <div class="video-container">
+          <iframe
+            id="video-frame"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Course Video"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="notes-section">
+          <strong>Resources/Adds:</strong>
+          <a id="github-link" href="#" target="_blank">
+            <img
+              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+              alt="GitHub"
+              style="width: 40px; vertical-align: middle; margin-right: 4px"
+            />
+          </a>
+          <a id="pdf-link" href="#" download>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png"
+              alt="PDF"
+              style="width: 24px; vertical-align: middle; margin-left: 4px"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Modules -->
+      <div class="right">
+        <h2>🚴‍♀️ Course Modules</h2>
+        <ul class="modules" id="module-list"></ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
