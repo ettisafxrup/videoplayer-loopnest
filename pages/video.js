@@ -34,7 +34,7 @@ moduleViewButton.addEventListener("click", async () => {
     li.className = "module-item"
     li.innerHTML = `
       <div class="module-title">📕 ${mod.title}</div>
-      <div class="module-subtitle">> ${mod.subtitle}</div>
+      <div class="module-subtitle">→ ${mod.subtitle}</div>
     `
     li.addEventListener("click", () => loadModule(index))
     moduleList.appendChild(li)
@@ -51,13 +51,20 @@ moduleViewButton.addEventListener("click", async () => {
   })
 
   function loadModule(index) {
+    function toAbsoluteUrl(url) {
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        return "https://" + url
+      }
+      return url
+    }
+
     const mod = modules[index]
     document.getElementById(
       "video-frame"
     ).src = `https://www.youtube.com/embed/${mod.videoId}`
     document.getElementById("video-frame").title = `${mod.title}`
-    document.getElementById("github-link").href = mod.github
-    document.getElementById("pdf-link").href = mod.pdf
+    document.getElementById("github-link").href = toAbsoluteUrl(mod.github)
+    document.getElementById("pdf-link").href = toAbsoluteUrl(mod.pdf)
 
     const allItems = document.querySelectorAll(".module-item")
     allItems.forEach((item) => item.classList.remove("active"))
