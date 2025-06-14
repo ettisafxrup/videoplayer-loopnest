@@ -7,8 +7,19 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="shortcut icon"
+      href="https://loopnest-academy.netlify.app/icon.png"
+      type="image/x-icon"
+    />
     <title>Bootcamp Dashboard</title>
     <link rel="stylesheet" href="video.css" />
+
+    <script>
+      if (!localStorage.getItem("email")) {
+        window.location.href = "/"
+      }
+    </script>
   </head>
   <body>
     <nav>
@@ -34,7 +45,7 @@
         <div class="video-container">
           <iframe
             id="video-frame"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            src=""
             title="Course Video"
             allow="autoplay; encrypted-media"
             frameborder="0"
@@ -63,7 +74,8 @@
 
       <!-- Right: Modules -->
       <div class="right">
-        <h2>🚴‍♀️ Course Modules</h2>
+        <h2>🚴‍♀️ কোর্স মডিউলস</h2>
+        <button id="view-module">➢</button>
         <ul class="modules" id="module-list"></ul>
       </div>
     </div>

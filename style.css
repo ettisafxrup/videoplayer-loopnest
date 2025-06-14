@@ -32,14 +32,14 @@ input[type="email"] {
   padding: 0.8rem;
   width: 100%;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  border: 2px solid #622291;
   border-radius: 8px;
   font-size: 1rem;
 }
 
 button {
   padding: 0.8rem 1.5rem;
-  background-color: #4f46e5;
+  background-color: #622291;
   color: white;
   border: none;
   border-radius: 8px;
@@ -49,7 +49,7 @@ button {
 }
 
 button:hover {
-  background-color: #3730a3;
+  background-color: rgba(255, 0, 0, 0.54);
 }
 
 #error {

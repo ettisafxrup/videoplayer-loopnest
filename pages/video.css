@@ -99,6 +99,43 @@ body {
   color: #666;
 }
 
+/* Module Button Design */
+
+#view-module {
+  background-color:rgba(218, 218, 7, 0.47);       /* Green background */
+  border: none;                    /* Remove default border */
+  color: black;                    /* White text */
+  padding: 10px 18px;              /* Some padding */
+  font-size: 18px;                 /* Bigger font for the icon */
+  border-radius: 6px;              /* Rounded corners */
+  cursor: pointer;                 /* Pointer cursor on hover */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  user-select: none;               /* Prevent text selection */
+  margin-bottom: 10px;
+}
+
+#view-module:hover {
+  background-color:rgba(255, 4, 4, 0.66);       /* Darker green on hover */
+  transform: translateY(-5px);     /* Slight lift on hover */
+}
+
+#view-module:active {
+  background-color:rgb(142, 62, 62);       /* Even darker when clicked */
+  transform: translateY(1px);      /* Pressed down effect */
+}
+
+#view-module:focus {
+  outline: 2px solidrgb(0, 0, 0);      /* Focus outline for accessibility */
+  outline-offset: 2px;
+}
+
+      
+#hidden{
+  display: none;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .container {
@@ -171,3 +208,4 @@ body {
       display: none;
       font-size: 1.5rem;
       color: white;
+
