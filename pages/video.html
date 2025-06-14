@@ -32,27 +32,56 @@
           />
         </div>
       </a>
-      <div class="nav-toggle" onclick="toggleNav()">☰</div>
+      <div class="nav-toggle" style="color: black" onclick="toggleNav()">☰</div>
       <div class="nav-links" id="nav-links">
         <a><span style="color: red">#</span>2weeksWebBootcamp</a>
-        <strong
-          id="name"
-          style="
-            color: black;
-            background-color: #ffeb3b82;
-            color: #333;
-            border: 1px solid #fdd835;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
-          "
-          onmouseover="this.style.backgroundColor='#ffeb3b'"
-          onmouseout="this.style.backgroundColor='#fff9c4'"
-          >User</strong
-        >
+        <div style="position: relative; display: inline-block">
+          <button style="border: none">
+            <strong
+              id="name"
+              style="
+                color: black;
+                background-color: #ffeb3b82;
+                color: #333;
+                border: 1px solid #fdd835;
+                padding: 10px 20px;
+                border-radius: 6px;
+                font-size: 16px;
+                cursor: pointer;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s;
+              "
+              onmouseover="this.style.backgroundColor='#ffeb3b'"
+              onmouseout="this.style.backgroundColor='#fff9c4'"
+              >User</strong
+            >
+          </button>
+
+          <div
+            style="
+              display: none;
+              position: absolute;
+              background-color: #fffde7;
+              min-width: 160px;
+              box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+              border-radius: 5px;
+              z-index: 1;
+            "
+            id="dropdownContent"
+          >
+            <a
+              id="email"
+              style="
+                color: black;
+                padding: 10px 16px;
+                display: block;
+                text-decoration: none;
+              "
+              >Email</a
+            >
+            <strong id="logout">Logout</strong>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -100,7 +129,36 @@
     <script type="module" src="video.js"></script>
     <script>
       document.getElementById("name").innerText =
-        "👤 " + localStorage.getItem("userName")
+        "👤 " + localStorage.getItem("userName") + " ↴"
+
+      document.getElementById("email").innerText =
+        "✉ " + localStorage.getItem("email")
+
+      document.getElementById("logout").addEventListener("click", () => {
+        localStorage.clear()
+        window.location.href = "/"
+      })
+      // Logout Functionality
+      const button = document.querySelector("button")
+      const dropdown = document.getElementById("dropdownContent")
+
+      function toggleNav() {
+        const navLinks = document.getElementById("nav-links")
+        navLinks.style.display =
+          navLinks.style.display === "block" ? "none" : "block"
+      }
+
+      button.onclick = () => {
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block"
+      }
+
+      // Optional: hide dropdown if clicked outside
+      document.onclick = function (e) {
+        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.display = "none"
+        }
+      }
     </script>
   </body>
 </html>

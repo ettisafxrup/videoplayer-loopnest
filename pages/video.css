@@ -11,6 +11,23 @@ body {
   color: #333;
 }
 
+#logout {
+  color: white;
+  background-color: rgba(194, 36, 19, 0.603);
+  padding: 10px 16px;
+  display: block;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#logout:hover {
+  color: white;
+  background-color: rgba(255, 0, 0, 0.77);
+  padding: 10px 16px;
+  display: block;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .module-item.active {
   background-color: rgba(234, 255, 0, 0.42); /* Light cyan, you can change */
   border-left: 4px solid rgb(233, 0, 0);
@@ -102,39 +119,87 @@ body {
 /* Module Button Design */
 
 #view-module {
-  background-color:rgba(218, 218, 7, 0.47);       /* Green background */
-  border: none;                    /* Remove default border */
-  color: black;                    /* White text */
-  padding: 10px 18px;              /* Some padding */
-  font-size: 18px;                 /* Bigger font for the icon */
-  border-radius: 6px;              /* Rounded corners */
-  cursor: pointer;                 /* Pointer cursor on hover */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
+  background-color: rgba(218, 218, 7, 0.47); /* Green background */
+  border: none; /* Remove default border */
+  color: black; /* White text */
+  padding: 10px 18px; /* Some padding */
+  font-size: 18px; /* Bigger font for the icon */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: background-color 0.3s ease, transform 0.2s ease;
-  user-select: none;               /* Prevent text selection */
+  user-select: none; /* Prevent text selection */
   margin-bottom: 10px;
 }
 
 #view-module:hover {
-  background-color:rgba(255, 4, 4, 0.66);       /* Darker green on hover */
-  transform: translateY(-5px);     /* Slight lift on hover */
+  background-color: rgba(255, 4, 4, 0.66); /* Darker green on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
 }
 
 #view-module:active {
-  background-color:rgb(142, 62, 62);       /* Even darker when clicked */
-  transform: translateY(1px);      /* Pressed down effect */
+  background-color: rgb(142, 62, 62); /* Even darker when clicked */
+  transform: translateY(1px); /* Pressed down effect */
 }
 
 #view-module:focus {
-  outline: 2px solidrgb(0, 0, 0);      /* Focus outline for accessibility */
+  outline: 2px solidrgb(0, 0, 0); /* Focus outline for accessibility */
   outline-offset: 2px;
 }
 
-      
-#hidden{
+#hidden {
   display: none;
 }
 
+/* ...existing code... */
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #fffde7;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid #fdd835;
+  }
+  .nav-toggle {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  nav {
+    position: relative;
+  }
+}
+
+/* Show nav-links when toggled */
+@media (max-width: 768px) {
+  .nav-links[style*="display: block"] {
+    display: flex !important;
+  }
+}
+
+/* Hide nav-toggle on desktop */
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
+  }
+  .nav-links {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: none;
+    width: auto;
+    border: none;
+  }
+}
+
+/* ...existing code... */
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -148,64 +213,58 @@ body {
   }
 }
 
-    nav {
-      background-color:rgb(255, 255, 255);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
-    }
+nav {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #f1c40f;
-    }
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f1c40f;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
 
-    .nav-links a {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
 
-    .nav-links a:hover {
-      color: #f1c40f;
-    }
+.nav-links a:hover {
+  color: #f1c40f;
+}
 
-    @media (max-width: 600px) {
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        background-color: #2c2c3e;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        padding: 10px;
-        display: none;
-      }
+@media (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.63);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 10px;
+    display: none;
+  }
 
-      .nav-toggle {
-        display: block;
-        cursor: pointer;
-      }
+  .nav-toggle {
+    display: block;
+    cursor: pointer;
+  }
 
-      .nav-toggle.active + .nav-links {
-        display: flex;
-      }
-    }
-
-    .nav-toggle {
-      display: none;
-      font-size: 1.5rem;
-      color: white;
-
+  .nav-toggle.active + .nav-links {
+    display: flex;
+  }
+}
