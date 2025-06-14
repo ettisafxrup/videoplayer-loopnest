@@ -2,54 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <title>Bootcamp Course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2weeksWebBootcamp - Login</title>
     <link rel="stylesheet" href="style.css" />
+    <script>
+      console.log(localStorage.getItem("email"))
+      if (localStorage.getItem("email")) {
+        window.location.href = "./pages/video.html"
+      }
+    </script>
   </head>
   <body>
     <div class="container">
-      <!-- Left: Video + Notes -->
-      <div class="left">
-        <div class="video-container">
-          <iframe
-            id="video-frame"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="Course Video"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </div>
-
-        <div class="notes-section">
-          <strong>Resources/Adds:</strong>
-          <a id="github-link" href="#" target="_blank">
-            <img
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-              alt="GitHub"
-              style="width: 40px; vertical-align: middle; margin-right: 4px"
-            />
-          </a>
-          <a id="pdf-link" href="#" download>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png"
-              alt="PDF"
-              style="width: 24px; vertical-align: middle; margin-left: 4px"
-            />
-          </a>
-        </div>
-      </div>
-
-      <!-- Right: Modules -->
-      <div class="right">
-        <h2>🚴‍♀️ Course Modules</h2>
-        <ul class="modules" id="module-list"></ul>
-      </div>
+      <form id="emailForm">
+        <h2>Enter Your Email</h2>
+        <input
+          type="email"
+          id="emailInput"
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Submit</button>
+        <p id="error" class="hidden"></p>
+      </form>
     </div>
-
-    <script src="script.js"></script>
+    <script src="login.js"></script>
+    <script>
+      function toggleNav() {
+        const links = document.getElementById("nav-links")
+        links.style.display = links.style.display === "flex" ? "none" : "flex"
+      }
+    </script>
   </body>
 </html>

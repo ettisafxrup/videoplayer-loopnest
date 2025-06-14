@@ -1,112 +1,63 @@
-/* General reset */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  font-family: "Roboto", "Baloo Da 2", sans-serif;
-  background: #f4f4f4;
+  background: linear-gradient(135deg, #2d2d44, #1e1e2f);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: 1rem;
   color: #333;
 }
 
-.module-item.active {
-  background-color: rgba(234, 255, 0, 0.42); /* Light cyan, you can change */
-  border-left: 4px solid rgb(233, 0, 0);
-  border-radius: 10px;
-}
-
-/* Main Container */
-.container {
-  display: flex;
-  flex-direction: row;
-  padding: 20px;
-  gap: 20px;
-}
-
-/* Left: Video and Notes */
-.left {
-  flex: 2;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.video-container {
+input[type="email"] {
+  padding: 0.8rem;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
-.video-container iframe {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-.notes-section {
-  margin-top: 10px;
-}
-
-.notes-section strong {
-  display: block;
-  margin-bottom: 8px;
-  color: #1e1e2f;
-}
-
-/* Right: Course Modules */
-.right {
-  flex: 1;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-height: 90vh; /* Limit height */
-  overflow-y: auto; /* Enable vertical scroll */
-}
-
-.right h2 {
-  margin-bottom: 10px;
-}
-
-.modules {
-  list-style: none;
-  max-height: 75vh; /* Scrollable height inside right panel */
-  overflow-y: auto;
-  padding-right: 8px; /* space for scrollbar */
-}
-
-.modules li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+button {
+  padding: 0.8rem 1.5rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 1rem;
   transition: background 0.3s;
 }
 
-.modules li:hover {
-  background: rgba(0, 68, 140, 0.31);
-  border-radius: 10px;
+button:hover {
+  background-color: #3730a3;
 }
 
-.module-title {
-  font-weight: bold;
+#error {
+  margin-top: 1rem;
+  color: red;
+  font-size: 0.95rem;
 }
 
-.module-subtitle {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .left,
-  .right {
-    width: 100%;
-  }
+.hidden {
+  display: none;
 }
