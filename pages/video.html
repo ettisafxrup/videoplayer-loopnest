@@ -34,8 +34,25 @@
       </a>
       <div class="nav-toggle" onclick="toggleNav()">☰</div>
       <div class="nav-links" id="nav-links">
-        <a>2weeksWebBootcamp</a>
-        <a id="email">Courses</a>
+        <a><span style="color: red">#</span>2weeksWebBootcamp</a>
+        <strong
+          id="name"
+          style="
+            color: black;
+            background-color: #ffeb3b82;
+            color: #333;
+            border: 1px solid #fdd835;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+          "
+          onmouseover="this.style.backgroundColor='#ffeb3b'"
+          onmouseout="this.style.backgroundColor='#fff9c4'"
+          >User</strong
+        >
       </div>
     </nav>
 
@@ -81,5 +98,9 @@
     </div>
 
     <script type="module" src="video.js"></script>
+    <script>
+      document.getElementById("name").innerText =
+        "👤 " + localStorage.getItem("userName")
+    </script>
   </body>
 </html>

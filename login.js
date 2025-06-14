@@ -7,7 +7,7 @@ document
     const errorElement = document.getElementById("error")
 
     try {
-      const response = await fetch("https://loopnest-back.onrender.com/", {
+      const response = await fetch("http://localhost:3000/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,6 +20,7 @@ document
 
       if (result.match === true) {
         localStorage.setItem("email", email)
+        localStorage.setItem("userName", result.name)
         window.location.href = "./pages/video.html" // Change to your desired page
       } else {
         errorElement.textContent = result.message || "Unknown error."
