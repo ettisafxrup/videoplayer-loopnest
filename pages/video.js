@@ -3,18 +3,28 @@ const moduleViewButton = document.getElementById("view-module")
 
 async function fetchSheetDBData() {
   try {
-    const response = await fetch("https://sheetdb.io/api/v1/mgpfkcwut0n6r", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    // SheetDB.io Api (Temporary terminated as limits request)
+    // const response = await fetch(
+    //   "https://sheetdb.io/api/v1/mgpfkcwut0n6r",
+    //
+    // NEW: NoCodeAPI (300req/day)
+    const response = await fetch(
+      "https://v1.nocodeapi.com/ettisafxrup/google_sheets/qvsYtlwqKFmkJOpL?tabId=Sheet1",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
 
-    if (!response.ok) {
+    if (!response) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    const data = await response.json()
+    const result = await response.json()
+    const data = result.data
+
     console.log(data)
     return data
   } catch (error) {
