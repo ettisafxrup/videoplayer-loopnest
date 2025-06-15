@@ -23,16 +23,24 @@
   </head>
   <body>
     <nav>
-      <a href="https://loopnest-academy.netlify.app/">
-        <div class="logo">
+      <a
+        href="https://loopnest-academy.netlify.app/"
+        style="text-decoration: none"
+      >
+        <div class="logo" style="display: flex">
           <img
-            src="https://loopnest-academy.netlify.app/icon.png"
+            src="https://loopnest-academy.netlify.app/assets/team/logo/icon.png"
             alt=""
             height="55"
           />
+          <h4 style="margin-top: 12px; color: #622291">LoopNest</h4>
         </div>
       </a>
-      <div class="nav-toggle" style="color: black" onclick="toggleNav()">☰</div>
+      <div class="nav-toggle" id="nav-toggle" onclick="toggleNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div class="nav-links" id="nav-links">
         <a><span style="color: red">#</span>2weeksWebBootcamp</a>
         <div style="position: relative; display: inline-block">
@@ -144,20 +152,14 @@
 
       function toggleNav() {
         const navLinks = document.getElementById("nav-links")
-        navLinks.style.display =
-          navLinks.style.display === "block" ? "none" : "block"
+        const navToggle = document.getElementById("nav-toggle")
+        navLinks.classList.toggle("open")
+        navToggle.classList.toggle("active")
       }
 
       button.onclick = () => {
         dropdown.style.display =
           dropdown.style.display === "block" ? "none" : "block"
-      }
-
-      // Optional: hide dropdown if clicked outside
-      document.onclick = function (e) {
-        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.style.display = "none"
-        }
       }
     </script>
   </body>

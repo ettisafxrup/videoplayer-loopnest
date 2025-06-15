@@ -18,14 +18,21 @@ async function fetchSheetDBData() {
     console.log(data)
     return data
   } catch (error) {
+    const errorMsg = document.createElement("strong")
+    errorMsg.style.color = "red"
+    errorMsg.innerHTML =
+      "Database limit reached out, Please report ettisafxrup to resolve issue. <br>"
+    document.querySelector(".right").appendChild(errorMsg)
     console.error("Fetch error:", error)
   }
 }
 
 moduleViewButton.addEventListener("click", async () => {
   const moduleList = document.getElementById("module-list")
+
   let modules
   if (!moduleList.innerHTML) {
+    moduleViewButton.innerText = "⟳"
     modules = await fetchSheetDBData()
   }
 
@@ -48,6 +55,8 @@ moduleViewButton.addEventListener("click", async () => {
       li.classList.add("active")
     })
     moduleList.appendChild(li)
+
+    moduleViewButton.innerText = "➢"
   })
 
   function loadModule(index) {
