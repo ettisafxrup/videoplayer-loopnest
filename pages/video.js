@@ -7,9 +7,14 @@ async function fetchSheetDBData() {
     // const response = await fetch(
     //   "https://sheetdb.io/api/v1/mgpfkcwut0n6r",
     //
-    // NEW: NoCodeAPI (300req/day)
+    // Opt 02: NoCodeAPI (300req/day)
+    // const response = await fetch(
+    //   "https://v1.nocodeapi.com/ettisafxrup/google_sheets/qvsYtlwqKFmkJOpL?tabId=Sheet1",
+    //   {
+    //
+    // NEW: sheet.best
     const response = await fetch(
-      "https://v1.nocodeapi.com/ettisafxrup/google_sheets/qvsYtlwqKFmkJOpL?tabId=Sheet1",
+      "https://api.sheetbest.com/sheets/a612550a-d443-476e-ba32-5f6372fb4320",
       {
         method: "GET",
         headers: {
@@ -22,8 +27,9 @@ async function fetchSheetDBData() {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    const result = await response.json()
-    const data = result.data
+    // const result = await response.json()
+    // const data = result.data
+    const data = await response.json()
 
     console.log(data)
     return data
