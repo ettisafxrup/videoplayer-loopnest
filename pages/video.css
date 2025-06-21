@@ -81,7 +81,8 @@ body {
   padding: 20px;
   border-radius: 10px;
   max-height: 90vh; /* Limit height */
-  overflow-y: auto; /* Enable vertical scroll */
+  /* overflow-y: hidden; */
+  /* Enable vertical scroll */
 }
 
 .right h2 {
