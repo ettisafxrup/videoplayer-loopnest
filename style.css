@@ -7,29 +7,31 @@
 
 body {
   background: linear-gradient(135deg, #2d2d44, #1e1e2f);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
 .container {
   background-color: #fff;
-  padding: 2rem 3rem;
+  padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   text-align: center;
-  max-width: 400px;
   width: 100%;
+  max-width: 400px;
 }
 
 h2 {
   margin-bottom: 1rem;
   color: #333;
+  font-size: 1.5rem;
 }
 
 input[type="email"] {
-  padding: 0.8rem;
+  padding: 0.75rem;
   width: 100%;
   margin-bottom: 1rem;
   border: 2px solid #622291;
@@ -38,7 +40,7 @@ input[type="email"] {
 }
 
 button {
-  padding: 0.8rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   background-color: #622291;
   color: white;
   border: none;
@@ -46,6 +48,7 @@ button {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s;
+  width: 100%;
 }
 
 button:hover {
@@ -60,4 +63,20 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  input[type="email"],
+  button {
+    font-size: 0.95rem;
+  }
 }

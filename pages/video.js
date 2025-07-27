@@ -3,32 +3,10 @@ const moduleViewButton = document.getElementById("view-module")
 
 async function fetchSheetDBData() {
   try {
-    // SheetDB.io Api (Temporary terminated as limits request)
-    // const response = await fetch(
-    //   "https://sheetdb.io/api/v1/mgpfkcwut0n6r",
-    //
-    // Opt 02: NoCodeAPI (300req/day)
-    // const response = await fetch(
-    //   "https://v1.nocodeapi.com/ettisafxrup/google_sheets/qvsYtlwqKFmkJOpL?tabId=Sheet1",
-    //   {
-    //
-    // NEW: sheet.best
     const response = await fetch(
-      "https://api.sheetbest.com/sheets/a612550a-d443-476e-ba32-5f6372fb4320",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgzeedU0n3fJWZBkvODii4K5sXueOUd3Ip6TA21NinK9nZCZPSYfuG9QWQjor56IYr4_kKX1Krsc2UtdIk5tzrzWNmY9Jxq7gAaSWaWII3lY_ZTPtfSs9WCzXbpqMBATY6iwMXs65YLx33ruaJYBOtc14Sw0mJeFJdoWL17bz4kZB61_NozH3vLLnLbIy2yp9EUf37TXheY85pNmcm4mHLgS_HfZY48hwI2r5xJwcj4ZmuOIC8lSg1dxlKhSGcH9azaFVG8PLv2YTXTK-plJYDUGdclzLR-0r0Vczkw&lib=M4wdroAKGSzVjk0iLAUBOD8rO6oHD--2g"
     )
 
-    if (!response) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-
-    // const result = await response.json()
-    // const data = result.data
     const data = await response.json()
 
     console.log(data)
@@ -37,64 +15,95 @@ async function fetchSheetDBData() {
     const errorMsg = document.createElement("strong")
     errorMsg.style.color = "red"
     errorMsg.innerHTML =
-      "Database limit reached out, Please report ettisafxrup to resolve issue. <br>"
+      "Something went wrong, Please report ettisafxrup to resolve issue. <br>"
     document.querySelector(".right").appendChild(errorMsg)
     console.error("Fetch error:", error)
   }
 }
 
-moduleViewButton.addEventListener("click", async () => {
-  const moduleList = document.getElementById("module-list")
+const moduleList = document.getElementById("module-list")
 
-  let modules
-  if (!moduleList.innerHTML) {
-    moduleViewButton.innerText = "⟳"
-    modules = await fetchSheetDBData()
-  }
+const rotateEmojies = [
+  "😀",
+  "😎",
+  "😍",
+  "🥳",
+  "🤔",
+  "😭",
+  "😡",
+  "👍",
+  "👎",
+  "🙏",
+  "🔥",
+  "💯",
+  "✨",
+  "🎉",
+  "💻",
+  "☕",
+  "🚀",
+  "🌟",
+  "⚡",
+  "🗿",
+]
 
-  modules.forEach((mod, index) => {
-    const li = document.createElement("li")
-    li.className = "module-item"
-    li.innerHTML = `
-      <div class="module-title">📕 ${mod.title}</div>
-      <div class="module-subtitle">→ ${mod.subtitle}</div>
+if (!moduleList.innerHTML) {
+  let index = 0
+  moduleViewButton.innerText = rotateEmojies[0]
+
+  const emojiesInterval = setInterval(() => {
+    moduleViewButton.innerText = rotateEmojies[index]
+    index++
+    if (index > rotateEmojies.length) index = 0
+  }, 100)
+
+  setTimeout(() => {
+    clearInterval(emojiesInterval)
+    moduleViewButton.innerText = "👀"
+  }, 5000)
+}
+
+modules = await fetchSheetDBData()
+
+modules.forEach((mod, index) => {
+  const li = document.createElement("li")
+  li.className = "module-item"
+  li.innerHTML = `
+      <div class="module-title">📕 ${mod[0]}</div>
+      <div class="module-subtitle">→ ${mod[1]}</div>
     `
-    li.addEventListener("click", () => loadModule(index))
-    moduleList.appendChild(li)
+  li.addEventListener("click", () => loadModule(index))
+  moduleList.appendChild(li)
 
-    li.addEventListener("click", () => {
-      loadModule(index)
-      // Highlight the selected module
-      document.querySelectorAll(".module-item").forEach((item) => {
-        item.classList.remove("active")
-      })
-      li.classList.add("active")
+  li.addEventListener("click", () => {
+    loadModule(index)
+    // Highlight the selected module
+    document.querySelectorAll(".module-item").forEach((item) => {
+      item.classList.remove("active")
     })
-    moduleList.appendChild(li)
-
-    moduleViewButton.innerText = "➢"
+    li.classList.add("active")
   })
-
-  function loadModule(index) {
-    function toAbsoluteUrl(url) {
-      if (!url.startsWith("http://") && !url.startsWith("https://")) {
-        return "https://" + url
-      }
-      return url
-    }
-
-    const mod = modules[index]
-    document.getElementById(
-      "video-frame"
-    ).src = `https://www.youtube.com/embed/${mod.videoId}`
-    document.getElementById("video-frame").title = `${mod.title}`
-    document.getElementById("github-link").href = toAbsoluteUrl(mod.github)
-    document.getElementById("pdf-link").href = toAbsoluteUrl(mod.pdf)
-
-    const allItems = document.querySelectorAll(".module-item")
-    allItems.forEach((item) => item.classList.remove("active"))
-    allItems[index].classList.add("active")
-  }
+  moduleList.appendChild(li)
 })
+
+function loadModule(index) {
+  function toAbsoluteUrl(url) {
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      return "https://" + url
+    }
+    return url
+  }
+
+  const mod = modules[index]
+  document.getElementById(
+    "video-frame"
+  ).src = `https://www.youtube.com/embed/${mod[2]}`
+  document.getElementById("video-frame").title = `${mod.title}`
+  document.getElementById("github-link").href = toAbsoluteUrl(mod[3])
+  document.getElementById("pdf-link").href = toAbsoluteUrl(mod[4])
+
+  const allItems = document.querySelectorAll(".module-item")
+  allItems.forEach((item) => item.classList.remove("active"))
+  allItems[index].classList.add("active")
+}
 
 // Render module list

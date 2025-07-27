@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2weeksWebBootcamp - Login</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="shortcut icon"
-      href="https://loopnest-academy.netlify.app/assets/team/logo/icon.png"
-      type="image/x-icon"
-    />
     <script>
       console.log(localStorage.getItem("email"))
       if (localStorage.getItem("email")) {
@@ -25,20 +20,17 @@
         width="100"
       />
       <form id="emailForm">
-        <strong
-          >LoopNest – <span style="color: red">#</span>2weeksWebBootcamp</strong
-        >
-        <p style="margin-top: 10px"></p>
         <input
           type="email"
           id="emailInput"
-          placeholder="Enter your email"
+          placeholder="Your Bootcamp Email"
           required
         />
-        <button type="submit">➾</button>
+        <button id="submit" type="submit">➾</button>
         <p id="error" class="hidden"></p>
       </form>
     </div>
+
     <script src="login.js"></script>
     <script>
       function toggleNav() {
